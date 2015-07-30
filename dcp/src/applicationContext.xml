@@ -17,6 +17,7 @@
 	</bean>
 	
 
+
 	 <!-- 解码字节大小和结束标志符号设置 -->
 	 <bean id="delimiterBasedFrameDecoder" class="org.jboss.netty.handler.codec.frame.DelimiterBasedFrameDecoder">
         <constructor-arg index="0"><value>10000</value></constructor-arg>

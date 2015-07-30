@@ -14,9 +14,12 @@
  */
 package com.whty.netty.server;
 
+import java.io.File;
 import java.net.InetSocketAddress;
 import java.util.TimeZone;
 import java.util.concurrent.Executors;
+
+import javax.net.ssl.SSLEngine;
 
 import org.apache.log4j.Logger;
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -26,6 +29,8 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.handler.codec.string.StringDecoder;
 import org.jboss.netty.handler.execution.ExecutionHandler;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
+import org.jboss.netty.handler.ssl.SslContext;
+import org.jboss.netty.handler.ssl.SslHandler;
 import org.jboss.netty.handler.timeout.IdleStateHandler;
 import org.jboss.netty.util.HashedWheelTimer;
 
@@ -53,6 +58,7 @@ public class DcpsServer {
 		TimeZone tz = TimeZone.getTimeZone("ETC/GMT-8");  // 设置时区为GTM-8
 		TimeZone.setDefault(tz);
 		Logger logger = Logger.getLogger(DcpsServer.class);
+		
 		try {
 			// 初始化Spring
 			SpringUtil.initSpring();
@@ -63,10 +69,25 @@ public class DcpsServer {
 	                        Executors.newCachedThreadPool(),8)); //worker
 	        
 	        ChannelPipeline pipeline =  Channels.pipeline();
+	        //tls
+	        SslContext sslCtx = SslContext.newServerContext(new File("根证书"),new File("公钥"));
+	        SSLEngine engine = sslCtx.newEngine();
+	        engine.setNeedClientAuth(true);//双向认证
+	        engine.setUseClientMode(false);//server模式
+	        //engine.setWantClientAuth(true);
+	        engine.setEnabledProtocols(new String[]{"TLSv10"});//协议版本
+	        pipeline.addLast("ssl", new SslHandler(engine));
+	        //
 	        pipeline.addLast("decoder", (StringDecoder)SpringUtil.getBean("config"));
+	        // 
+	        pipeline.addLast("decoder", (StringDecoder)SpringUtil.getBean("config"));
+	        //
 	        pipeline.addLast("encoder", (StringDecoder)SpringUtil.getBean("config"));
+	        
 	        pipeline.addLast("TimeoutJudge", (StringDecoder)SpringUtil.getBean("config"));
+	        
 	        pipeline.addLast("TimeoutHandler", (StringDecoder)SpringUtil.getBean("config"));
+	        
 	        pipeline.addLast("handler", (StringDecoder)SpringUtil.getBean("config"));
 	        
 	        
