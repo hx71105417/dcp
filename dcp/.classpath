@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="lib/netty-3.10.4.Final.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aop-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-asm-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-expression-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-jms-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-tx-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web-3.0.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-attributes-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-attributes-compiler.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-chain-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-codec.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-httpclient.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-lang.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-net-1.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/victor/workspace/dcp/lib/commons-validator-1.3.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

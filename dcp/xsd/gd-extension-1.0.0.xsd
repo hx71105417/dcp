@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by User (Compay) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns="http://www.gi-de.com/gd-extionsion-1.0.0" targetNamespace="http://www.gi-de.com/gd-extionsion-1.0.0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import
+		namespace="http://namespaces.globalplatform.org/systems-messaging/2.1.0"
+		schemaLocation="GP.systems.messaging.2.1.0.xsd" />
+
+
+	<xs:annotation>
+		<xs:documentation>本元素用于传递用户的云卡申请请求。云端支付平台将此申请信息发送到发卡行系统。
+		</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ApplyInfoType">
+		<xs:annotation>
+			<xs:documentation>本元素用于传递用户的云卡申请请求。云端支付平台将此申请信息发送到发卡行系统。
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UserID" type="xs:string" minOccurs="1"
+				maxOccurs="1"></xs:element>
+			<xs:element name="Name" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>用户姓名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDType" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>证件类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDValue" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>证件号码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MSISDN" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>手机号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>邮箱</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PAN" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>主账号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValidDate" type="xs:date" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>主账户有效期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CVN2" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>CVN2（针对信用卡）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PIN" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>PIN（针对借记卡）</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ActivationInfoType">
+		<xs:annotation>
+			<xs:documentation>本元素用于申请激活码，发送激活请求。ActivationCode为空是申请激活码，有值则是验证激活码。
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UserId" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>UserId</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TokenPAN" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>标记</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivationCode" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>激活码，申请激活码请求置空，如果是验证必填。</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HceCardInfoType">
+		<xs:annotation>
+			<xs:documentation>本元素包括云卡的信息，用于发卡行查询。</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UserName" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>持卡人姓名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDType" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>证件类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IDValue" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>证件号码</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>邮箱</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PAN" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>关联的主账号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ApplyDate" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>申请日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivateDate" type="xs:date" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>激活日期，如果未激活，返回空值</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValidateLUKCount" type="xs:int"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>当前已下载未使用的LUK数量</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TokenPAN" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>云卡标记</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExpireDate" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>云卡过期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Status" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>云卡状态
+						/** 未激活 */
+						INACTIVED,
+
+						/** 正常 */
+						READY,
+
+						/** 暂停 */
+						SUSPENDED,
+
+						/** 注销 */
+						REVOKED;
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceModel" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>设备型号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceSN" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>设备序列号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OsType" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>操作系统类型</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OsVersion" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>操作系统版本</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DeviceId" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>设备ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IMEI" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>IMEI</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WalletName" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>移动应用名称</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WalletSignature" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>移动应用签名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WalletVersion" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>移动应用版本</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="EntityTypeEnum">
+		<xs:restriction base="xs:string">
+			<!-- 云卡号 -->
+			<xs:enumeration value="TOKEN_PAN"></xs:enumeration>
+
+			<!-- 原始卡号 -->
+			<xs:enumeration value="ORIGINAL_PAN"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OperationReasonEnum">
+		<xs:restriction base="xs:string">
+			<!-- 锁定/解锁 -->
+			<xs:enumeration value="LOCK_UNLOCK"></xs:enumeration>
+
+			<!-- 挂失/解挂 -->
+			<xs:enumeration value="LOST_FOUND"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="EntityInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				用于指定操作实体的类型，可以是标记，也可以是PAN，针对挂失、解挂、锁定、解锁及注销。EntityType指明是针对标记还是主PAN。
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EntityType" type="ns:EntityTypeEnum"
+				minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						实体类型，参见EntityTypeEnum
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Value" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						实体的值，根据EntityType确定是标记还是相关联的主卡号
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperationReason" type="ns:OperationReasonEnum"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						操作原因，对锁定/解锁及挂失/解挂是必须的，参见OperationReasonEnum
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PanUpdateInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				主PAN的信息更新，用于银行通知云端支付平台。NewPAN留空标识是原始卡号的有效期延长，有值表示是换卡。
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OrginalPAN" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>原始卡号</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NewPAN" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>
+						变更后的新卡号，如果只是有效期变更，此字段留空
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValidDate" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>新卡号的有效期或原始卡号新的有效期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ApplyResponseType">
+		<xs:sequence>
+			<xs:element name="ImageId" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>卡片图样ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CardHolderName" type="xs:string"
+				minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>持卡人姓名</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PanExpire" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>主卡的失效日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CardExpire" type="xs:date" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>卡片失效日期</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ActivationInfo" type="ns:ActivationInfoType">
+		<xs:annotation>
+			<xs:documentation>申请激活码、激活</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="ApplyInfo" type="ns:ApplyInfoType">
+		<xs:annotation>
+			<xs:documentation>云卡申请</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="EntityInfo" type="ns:EntityInfoType"></xs:element>
+
+	<xs:element name="HceCardInfo" type="ns:HceCardInfoType">
+		<xs:annotation>
+			<xs:documentation>云卡的信息，用于发卡行查询。</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="PanUpdateInfo" type="ns:PanUpdateInfoType">
+		<xs:annotation>
+			<xs:documentation>主PAN的信息更新</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+
+	<xs:element name="ApplyResponse" type="ns:ApplyResponseType">
+		<xs:annotation>
+			<xs:documentation>申请云卡返回</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

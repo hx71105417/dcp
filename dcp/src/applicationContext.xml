@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:amq="http://activemq.org/config/1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:/config.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+
+	 <!-- 解码字节大小和结束标志符号设置 -->
+	 <bean id="delimiterBasedFrameDecoder" class="org.jboss.netty.handler.codec.frame.DelimiterBasedFrameDecoder">
+        <constructor-arg index="0"><value>10000</value></constructor-arg>
+        <constructor-arg index="1" ref="delimiters">
+        </constructor-arg>
+     </bean>
+	
+	<bean id="delimiters" class="com.huateng.netty.handler.MyDelimiters" factory-method="jingDelimiter">
+	</bean>
+
+	<!--解码方式设置-->
+     <bean id="stringDecoder" class="org.jboss.netty.handler.codec.string.StringDecoder">
+		  <constructor-arg index="0">  
+		    <util:constant static-field="org.jboss.netty.util.CharsetUtil.UTF_8"/>  
+		  </constructor-arg>
+     </bean>	
+
+	<!--编码方式设置-->
+     <bean id="stringEncoder" class="org.jboss.netty.handler.codec.string.StringEncoder">
+		  <constructor-arg index="0">  
+		    <util:constant static-field="org.jboss.netty.util.CharsetUtil.UTF_8"/>  
+		  </constructor-arg>
+     </bean>
+
+     <!--空闲时间处理设置-->
+	 <bean id="idleStateHandler" class="org.jboss.netty.handler.timeout.IdleStateHandler">
+         <constructor-arg index="0"><bean class="org.jboss.netty.util.HashedWheelTimer"/></constructor-arg>
+         <constructor-arg index="1"><value>0</value></constructor-arg>
+         <constructor-arg index="2"><value>0</value></constructor-arg>
+		 <constructor-arg index="3"><value>${timeout}</value></constructor-arg>
+     </bean>
+      
+	<!--短连接超时处理-->
+     <bean id="heartbeatHandler" class="com.huateng.netty.handler.HeartbeatHandler">
+     </bean>
+
+	<!--业务处理-->
+     <bean id="topbpas01ServerHandler" class="com.huateng.netty.handler.TopbpasOlServerHandler">
+     </bean>
+     
+<bean id="config" class="com.whty.common.util.Config">
+		<property name="port">
+			<list>
+				<value>9999</value>
+				<value>19999</value>
+			</list>
+		</property>
+		<property name="localIp">
+			<value>127.0.0.1</value>
+		</property>			
+	</bean>	
+</beans>
